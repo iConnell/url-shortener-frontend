@@ -1,5 +1,9 @@
 # url-shortener
 
+A url shortener to reduce a long link
+
+Backend [here](https://github.com/iConnell/url-shortener)
+
 ## Project setup
 ```
 yarn install
