@@ -26,7 +26,7 @@ export default {
 
   methods: {
     async submit() {
-      const data = await axios.post("http://127.0.0.1:8000/", {
+      const data = await axios.post("https://shlyit.herokuapp.com/", {
         url: this.longUrl,
       });
       this.shortUrl = data.data;
