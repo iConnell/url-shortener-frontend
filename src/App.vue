@@ -1,17 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h2>Free URL Shortener</h2>
+
+  <form @submit.prevent="submit">
+    <input v-model="longUrl" type="text" /> |
+
+    <input type="submit" value="Submit" />
+  </form>
+
+  <a :href="this.shortUrl"
+    ><p v-if="shortUrl">{{ this.shortUrl }}</p></a
+  >
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import axios from "axios";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+
+  data() {
+    return {
+      longUrl: "",
+      shortUrl: null,
+    };
+  },
+
+  methods: {
+    async submit() {
+      const data = await axios.post("http://127.0.0.1:8000/", {
+        url: this.longUrl,
+      });
+      this.shortUrl = data.data;
+    },
+  },
+};
 </script>
 
 <style>
