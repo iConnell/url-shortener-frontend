@@ -7,7 +7,7 @@
     <input type="submit" value="Submit" />
   </form>
 
-  <a :href="this.shortUrl"
+  <a :href="this.shortUrl" target="_parent"
     ><p v-if="shortUrl">{{ this.shortUrl }}</p></a
   >
 </template>
