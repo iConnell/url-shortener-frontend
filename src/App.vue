@@ -7,9 +7,10 @@
     <input type="submit" value="Submit" />
   </form>
 
-  <a :href="this.shortUrl" target="_blank"
-    ><p v-if="shortUrl">{{ this.shortUrl }}</p></a
-  >
+  <div v-if="shortUrl">
+    <input id="shortUrl" type="text" :value="this.shortUrl" />
+    <button @click="copy">Copy Url</button>
+  </div>
 </template>
 
 <script>
@@ -30,6 +31,14 @@ export default {
         url: this.longUrl,
       });
       this.shortUrl = data.data;
+    },
+
+    copy() {
+      const text = document.getElementById("shortUrl");
+
+      text.select();
+
+      navigator.clipboard.writeText(text.value);
     },
   },
 };
